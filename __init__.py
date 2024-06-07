@@ -35,7 +35,7 @@ def authentification():
             if username == 'admin':
                 return redirect(url_for('lecture'))
             elif username == 'user':
-                return redirect(url_for('lecture'))
+                return redirect(url_for('fiche_client'))
         else:
             # Afficher un message d'erreur si les identifiants sont incorrects
             return render_template('formulaire_authentification.html', error=True)
