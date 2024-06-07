@@ -11,6 +11,9 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions
 def est_authentifie():
     return session.get('authentifie')
 
+def est_user_authentifie():
+    return session.get('user_authentifie')
+
 @app.route('/')
 def hello_world():
     return render_template('hello.html')
@@ -27,8 +30,8 @@ def lecture():
 @app.route('/authentification', methods=['GET', 'POST'])
 def authentification():
     if request.method == 'POST':
-        # Vérifier les identifiants
-        if request.form['username'] == 'user' and request.form['password'] == '12345':
+        # Vérifier les identifiants admin
+        if request.form['username'] == 'admin' and request.form['password'] == 'password':
             session['authentifie'] = True
             # Rediriger vers la route lecture après une authentification réussie
             return redirect(url_for('lecture'))
@@ -37,6 +40,20 @@ def authentification():
             return render_template('formulaire_authentification.html', error=True)
 
     return render_template('formulaire_authentification.html', error=False)
+
+@app.route('/authentification_user', methods=['GET', 'POST'])
+def authentification_user():
+    if request.method == 'POST':
+        # Vérifier les identifiants user
+        if request.form['username'] == 'user' and request.form['password'] == '12345':
+            session['user_authentifie'] = True
+            # Rediriger vers la route fiche_nom après une authentification réussie
+            return redirect(url_for('fiche_nom'))
+        else:
+            # Afficher un message d'erreur si les identifiants sont incorrects
+            return render_template('formulaire_authentification_user.html', error=True)
+
+    return render_template('formulaire_authentification_user.html', error=False)
 
 @app.route('/fiche_client/<int:post_id>')
 def Readfiche(post_id):
@@ -79,8 +96,8 @@ def enregistrer_client():
 # Nouvelle route pour rechercher un client par nom
 @app.route('/fiche_nom/', methods=['GET', 'POST'])
 def fiche_nom():
-    if not est_authentifie():
-        return redirect(url_for('authentification'))
+    if not est_user_authentifie():
+        return redirect(url_for('authentification_user'))
 
     if request.method == 'POST':
         nom = request.form['nom']
