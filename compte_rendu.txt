@@ -1,0 +1,36 @@
+Rapport de MSPR
+
+Séquence 1 : Github
+
+Disponible ici : https://github.com/Tomskoo92/MSPR_CLOE855/tree/main
+
+Séquence 2 : Création d'un hébergement en ligne
+
+Disponible ici : https://tomm.alwaysdata.net/
+
+Séquence 3 : Les actions Github (Industrialisation Continue)
+
+Fichier CICD ajouter au répertoire github.
+
+Séquence 4 : Créer la base de données sur votre serveur
+
+Vérifiable à l’aide des api depuis le lien alwaysdata.
+
+Séquence 5 : Exercices d'appropriation de la solution Web
+
+Connexion avec utilisateur = user et mot de passe = 12345.
+
+Puis taper dans la barre de recherche: https://tomm.alwaysdata.net/fiche_nom/”nomduclient”
+
+Séquence 6 : MSPR CLOE855
+
+Script de backup de la BBD disponible depuis mon repo git. Automatisation du script avec un crontab
+
+Voici les solutions que l’on peut mettre en place afin de répondre aux exigences du cahier des charges :
+
+ - Utiliser des outils comme Auditd pour surveiller et enregistrer les événements liés aux accès à la base de données et aux services ;
+ - Mettre en place Snort ou Suricata pour surveiller l'activité réseau et les comportements suspects sur les serveurs ;
+ - Utiliser des solutions comme HashiCorp Vault ou AWS secret Manager pour gérer les clés SSH de manière sécurisée ;
+ - Mettre en place des scripts automatisés pour la rotation des clés SSH à intervalles réguliers ;
+ - Utiliser des outils comme Google Authenticator, Microsoft Authentificator pour mettre en place une authentification à deux facteurs ;
+ - Intégrer des services comme SonarQube pour l’analyse du code.
